@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'OtherPage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,20 +35,41 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-            child: StreamBuilder(
-          stream: _controller.stream,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            }
-            return Text('${snapshot.data}');
-          },
-        )),
+        body: SafeArea(
+          child: Center(
+              child: StreamBuilder(
+            stream: _controller.stream,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              }
+              return Column(
+                children: [
+                  Text('${snapshot.data}'),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OtherPage()));
+                      },
+                      child: Text('Other Method'))
+                ],
+              );
+            },
+          )),
+        ),
       ),
     );
   }
