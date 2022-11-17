@@ -32,6 +32,7 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: Center(
@@ -48,10 +49,15 @@ class _MainState extends State<Main> {
                   SizedBox(
                     width: 100,
                     child: ElevatedButton(
-                        onPressed: () {
-                          lastOues();
-                        },
-                        child: Text('Previous')),
+                      onPressed: () {
+                        lastOues();
+                      },
+                      // Method one..
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.amber)),
+                      child: Text('Previous'),
+                    ),
                   ),
                   SizedBox(width: 10),
                   SizedBox(
@@ -60,6 +66,9 @@ class _MainState extends State<Main> {
                         onPressed: () {
                           changeQues();
                         },
+                        // Method 2..
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber),
                         child: Text('Next')),
                   )
                 ],
