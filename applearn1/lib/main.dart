@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:applearn1/answerButton.dart';
 import 'package:applearn1/question.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +18,13 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   var questions = ['What is your name?', 'Are you fine?', 'Hey Hello'];
   var index = 0;
-  void changeQues() {
+  changeQues() {
     setState(() {
       if (index < questions.length - 1) index++;
     });
   }
 
-  void lastOues() {
+  lastOues() {
     setState(() {
       if (index > 0) index--;
     });
@@ -46,30 +47,14 @@ class _MainState extends State<Main> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 100,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        lastOues();
-                      },
-                      // Method one..
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.amber)),
-                      child: Text('Previous'),
-                    ),
+                  AnswerButton(
+                    butText: 'Previous',
+                    questionHandler: lastOues,
                   ),
                   SizedBox(width: 10),
-                  SizedBox(
-                    width: 100,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          changeQues();
-                        },
-                        // Method 2..
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.amber),
-                        child: Text('Next')),
+                  AnswerButton(
+                    butText: 'Next',
+                    questionHandler: changeQues,
                   )
                 ],
               )
