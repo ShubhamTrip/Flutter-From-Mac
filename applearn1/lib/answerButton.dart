@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 
 class AnswerButton extends StatelessWidget {
@@ -8,8 +10,9 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 100,
+      margin: EdgeInsets.all(10),
       child: ElevatedButton(
           onPressed: questionHandler,
           // Method 2..

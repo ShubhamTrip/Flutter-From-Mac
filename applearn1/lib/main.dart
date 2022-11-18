@@ -16,7 +16,20 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-  var questions = ['What is your name?', 'Are you fine?', 'Hey Hello'];
+  var questions = [
+    {
+      'questionText': 'What is yours name?',
+      'answer': ['Option 1', 'Option 2', 'Option 3']
+    },
+    {
+      'questionText': 'Are you fine?',
+      'answer': ['Option 1', 'Option 2', 'Option 3']
+    },
+    {
+      'questionText': 'Is everything fine?',
+      'answer': ['Option 1', 'Option 2']
+    }
+  ];
   var index = 0;
   changeQues() {
     setState(() {
@@ -40,22 +53,19 @@ class _MainState extends State<Main> {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Question(questions[index]),
+              Question('${questions[index]['questionText']}'),
               SizedBox(
                 height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AnswerButton(
-                    butText: 'Previous',
-                    questionHandler: lastOues,
-                  ),
-                  SizedBox(width: 10),
-                  AnswerButton(
-                    butText: 'Next',
-                    questionHandler: changeQues,
-                  )
+                  ...(questions[index]['answer'] as List<String>).map((ans) {
+                    return AnswerButton(
+                      butText: ans,
+                      questionHandler: changeQues,
+                    );
+                  })
                 ],
               )
             ],
