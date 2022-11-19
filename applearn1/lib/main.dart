@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:applearn1/answerButton.dart';
-import 'package:applearn1/question.dart';
+import 'package:applearn1/Quiz.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,25 +49,10 @@ class _MainState extends State<Main> {
       home: Scaffold(
         body: SafeArea(
           child: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Question('${questions[index]['questionText']}'),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ...(questions[index]['answer'] as List<String>).map((ans) {
-                    return AnswerButton(
-                      butText: ans,
-                      questionHandler: changeQues,
-                    );
-                  })
-                ],
-              )
-            ],
+              child: Quiz(
+            index: index,
+            lst: questions,
+            change: changeQues,
           )),
         ),
       ),
