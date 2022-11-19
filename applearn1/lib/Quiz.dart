@@ -8,6 +8,7 @@ class Quiz extends StatelessWidget {
   final Function change;
   final List<Map<String, Object>> lst;
   final int index;
+
   Quiz({required this.change, required this.lst, required this.index});
 
   @override
@@ -23,10 +24,10 @@ class Quiz extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...(lst[index]['answer'] as List<String>).map((ans) {
+            ...(lst[index]['answer'] as List<Map<String, Object>>).map((ans) {
               return AnswerButton(
-                butText: ans,
-                questionHandler: change,
+                butText: ans['text'] as String,
+                questionHandler: () => change(ans['score']),
               );
             })
           ],

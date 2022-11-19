@@ -15,30 +15,44 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  int count = 0;
   var questions = [
     {
       'questionText': 'What is yours name?',
-      'answer': ['Option 1', 'Option 2', 'Option 3']
+      'answer': [
+        {'score': 30, 'text': 'Option 1'},
+        {'score': 20, 'text': 'Option 2'},
+        {'score': 10, 'text': 'Option 3'}
+      ]
     },
     {
       'questionText': 'Are you fine?',
-      'answer': ['Option 1', 'Option 2', 'Option 3']
+      'answer': [
+        {'score': 50, 'text': 'Options 1'},
+        {'score': 20, 'text': 'Options 2'}
+      ]
     },
     {
       'questionText': 'Is everything fine?',
-      'answer': ['Option 1', 'Option 2']
+      'answer': [
+        {'score': 20, 'text': 'Option 1'},
+        {'score': 10, 'text': 'Option 2'},
+        {'score': 40, 'text': 'Option 3'}
+      ]
     }
   ];
   var index = 0;
-  changeQues() {
+  changeQues(int sc) {
     setState(() {
-      if (index < questions.length - 1) index++;
+      index++;
+      count += sc;
     });
   }
 
-  lastOues() {
+  restart() {
     setState(() {
-      if (index > 0) index--;
+      index = 0;
+      count = 0;
     });
   }
 
@@ -49,11 +63,23 @@ class _MainState extends State<Main> {
       home: Scaffold(
         body: SafeArea(
           child: Center(
-              child: Quiz(
-            index: index,
-            lst: questions,
-            change: changeQues,
-          )),
+              child: (index < questions.length)
+                  ? Quiz(
+                      index: index,
+                      lst: questions,
+                      change: changeQues,
+                    )
+                  : Column(
+                      children: [
+                        SizedBox(height: 300),
+                        Text('Your total score is $count'),
+                        SizedBox(height: 40),
+                        ElevatedButton(
+                          onPressed: restart,
+                          child: Text('Restart'),
+                        )
+                      ],
+                    )),
         ),
       ),
     );
