@@ -1,3 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:expanseapp/Models/TransCard.dart';
+import 'package:expanseapp/Models/transactions.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +16,14 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  List<Transactions> transactions = [
+    Transactions(
+        amount: 99.99, date: DateTime.now(), title: "New bag", id: "t1"),
+    Transactions(
+        amount: 69, date: DateTime.now(), title: "New watch", id: "t2"),
+    Transactions(
+        amount: 240.99, date: DateTime.now(), title: "New shoes", id: "t3")
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,15 +40,14 @@ class _MainState extends State<Main> {
               ),
             ),
             Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  height: 80,
-                  width: double.infinity,
-                  color: Colors.amber,
-                )
-              ],
-            )
+                children: transactions
+                    .map((value) => TransCard(
+                          date: DateTime.now(),
+                          product: value.title,
+                          price: value.amount,
+                        ))
+                    .toList()),
+            TextField()
           ],
         )),
       ),
