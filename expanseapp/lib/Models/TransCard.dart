@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class TransCard extends StatelessWidget {
   String product;
   DateTime date;
-  double price;
+  String price;
   TransCard({required this.product, required this.date, required this.price});
 
   @override

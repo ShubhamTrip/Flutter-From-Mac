@@ -16,13 +16,13 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  TextEditingController addtitle = TextEditingController();
+  TextEditingController addprice = TextEditingController();
+
   List<Transactions> transactions = [
-    Transactions(
-        amount: 99.99, date: DateTime.now(), title: "New bag", id: "t1"),
-    Transactions(
-        amount: 69, date: DateTime.now(), title: "New watch", id: "t2"),
-    Transactions(
-        amount: 240.99, date: DateTime.now(), title: "New shoes", id: "t3")
+    Transactions(amount: '99.99', date: DateTime.now(), title: "New bag"),
+    Transactions(amount: '69', date: DateTime.now(), title: "New watch"),
+    Transactions(amount: '240.99', date: DateTime.now(), title: "New shoes")
   ];
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,33 @@ class _MainState extends State<Main> {
           children: [
             Card(
               child: Container(
+                padding: EdgeInsets.all(40),
                 height: 300,
                 width: double.infinity,
                 color: Colors.amberAccent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextField(
+                      controller: addtitle,
+                      decoration: InputDecoration(labelText: 'Product'),
+                    ),
+                    TextField(
+                      controller: addprice,
+                      decoration: InputDecoration(labelText: 'Amount'),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            transactions.add(Transactions(
+                                amount: addprice.text,
+                                date: DateTime.now(),
+                                title: addtitle.text));
+                          });
+                        },
+                        child: Text("Add Item"))
+                  ],
+                ),
               ),
             ),
             Column(
@@ -46,8 +70,7 @@ class _MainState extends State<Main> {
                           product: value.title,
                           price: value.amount,
                         ))
-                    .toList()),
-            TextField()
+                    .toList())
           ],
         )),
       ),
