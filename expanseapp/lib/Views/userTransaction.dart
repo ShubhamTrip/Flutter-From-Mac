@@ -19,12 +19,25 @@ class _usrTransactionsState extends State<usrTransactions> {
     Transactions(amount: 69, date: DateTime.now(), title: "New watch"),
     Transactions(amount: 240.99, date: DateTime.now(), title: "New shoes")
   ];
+
+  void addTrans(String txTitle, double txAmount) {
+    final newTx = Transactions(
+      title: txTitle,
+      amount: txAmount,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      transactions.add(newTx);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         NewTransaction(
-          transactions: transactions,
+          txfunc: addTrans,
         ),
         TransactionList(transactions: transactions)
       ],

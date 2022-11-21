@@ -4,17 +4,13 @@ import 'package:flutter/material.dart';
 
 import '../Models/transactions.dart';
 
-class NewTransaction extends StatefulWidget {
-  List<Transactions> transactions;
+class NewTransaction extends StatelessWidget {
+  final Function txfunc;
 
-  NewTransaction({required this.transactions});
+  NewTransaction({required this.txfunc});
 
-  @override
-  State<NewTransaction> createState() => _NewTransactionState();
-}
+  TextEditingController addtitle = TextEditingController();
 
-class _NewTransactionState extends State<NewTransaction> {
-  final addtitle = TextEditingController();
   TextEditingController addprice = TextEditingController();
 
   @override
@@ -38,12 +34,7 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    // transaction.add(Transactions(
-                    //     amount: double.parse(addprice.text),
-                    //     date: DateTime.now(),
-                    //     title: addtitle.text));
-                  });
+                  txfunc(addtitle.text, double.parse(addprice.text));
                 },
                 child: Text("Add Item"))
           ],
