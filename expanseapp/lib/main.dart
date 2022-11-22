@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:expanseapp/Components/Chart.dart';
 import 'package:expanseapp/Views/newTransaction.dart';
 import 'package:expanseapp/Views/userTransaction.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _MainState extends State<Main> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
-          children: [usrTransactions(trans: transactions)],
+          children: [Chart(), usrTransactions(trans: transactions)],
         ),
       )),
       floatingActionButton: FloatingActionButton(
