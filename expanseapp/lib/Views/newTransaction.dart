@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../Models/transactions.dart';
-
 class NewTransaction extends StatelessWidget {
   final Function txfunc;
 
@@ -31,20 +29,20 @@ class NewTransaction extends StatelessWidget {
         padding: EdgeInsets.all(40),
         height: 300,
         width: double.infinity,
-        color: Colors.amberAccent,
+        color: Colors.blueGrey[300],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TextField(
               controller: addtitle,
               decoration: InputDecoration(labelText: 'Product'),
-              onSubmitted: (_) => onSubmit,
+              onSubmitted: (_) => onSubmit(),
             ),
             TextField(
               controller: addprice,
               decoration: InputDecoration(labelText: 'Amount'),
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => onSubmit,
+              onSubmitted: (_) => onSubmit(),
             ),
             ElevatedButton(onPressed: onSubmit, child: Text("Add Item"))
           ],
