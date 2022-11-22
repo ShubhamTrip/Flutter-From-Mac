@@ -13,6 +13,17 @@ class NewTransaction extends StatelessWidget {
 
   TextEditingController addprice = TextEditingController();
 
+  void onSubmit() {
+    final txt = addtitle.text;
+    final price = double.parse(addprice.text);
+
+    if (txt.length <= 2 || price < 0) {
+      return;
+    }
+
+    txfunc(txt, price);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,16 +38,15 @@ class NewTransaction extends StatelessWidget {
             TextField(
               controller: addtitle,
               decoration: InputDecoration(labelText: 'Product'),
+              onSubmitted: (_) => onSubmit,
             ),
             TextField(
               controller: addprice,
               decoration: InputDecoration(labelText: 'Amount'),
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => onSubmit,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  txfunc(addtitle.text, double.parse(addprice.text));
-                },
-                child: Text("Add Item"))
+            ElevatedButton(onPressed: onSubmit, child: Text("Add Item"))
           ],
         ),
       ),

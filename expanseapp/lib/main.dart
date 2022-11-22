@@ -19,9 +19,17 @@ class _MainState extends State<Main> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: Text("Expanse App"),
+          actions: [
+            Icon(Icons.add),
+          ],
+        ),
         body: SafeArea(
-            child: Column(
-          children: [usrTransactions()],
+            child: SingleChildScrollView(
+          child: Column(
+            children: [usrTransactions()],
+          ),
         )),
       ),
     );

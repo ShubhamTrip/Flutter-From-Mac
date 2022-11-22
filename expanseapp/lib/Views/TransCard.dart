@@ -34,7 +34,7 @@ class TransCard extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     margin: EdgeInsets.all(10),
                     child: Text(
-                      'Price: $price',
+                      'Price: ${price.toStringAsFixed(2)}',
                       style:
                           TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                     ),
