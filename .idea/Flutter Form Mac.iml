@@ -20,6 +20,9 @@
       <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sqfliteapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sqfliteapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sqfliteapp/.pub" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 33, extension level 3 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Views/notes_screen.dart';
+
 void main() {
   runApp(const Main());
 }
@@ -14,6 +16,12 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      title: 'Flutter Local Database demo app',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const NotesScreen(),
+    );
   }
 }
