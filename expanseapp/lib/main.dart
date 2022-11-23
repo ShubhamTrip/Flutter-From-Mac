@@ -8,6 +8,7 @@ import 'Models/transactions.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: Main(),
   ));
 }
@@ -60,7 +61,7 @@ class _MainState extends State<Main> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
-          children: [Chart(), usrTransactions(trans: transactions)],
+          children: [Chart(transactions), usrTransactions(trans: transactions)],
         ),
       )),
       floatingActionButton: FloatingActionButton(
