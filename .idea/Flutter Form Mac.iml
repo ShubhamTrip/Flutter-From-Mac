@@ -17,6 +17,9 @@
       <excludeFolder url="file://$MODULE_DIR$/expanseapp/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/expanseapp/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/expanseapp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/sharedprefapp/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 33, extension level 3 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
