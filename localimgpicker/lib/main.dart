@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:localimgpicker/models/DB_Helper.dart';
 import 'dart:io';
 import 'models/Picture_model.dart';
+import 'models/Utility.dart';
 
 void main() {
   runApp(const Main());
@@ -20,7 +21,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
 
-  Future<File>?imageFile;
+  Future<File>? imageFile;
   Image? image;
   DBHelper? dbHelper;
   List<Picture>? pictures;
@@ -34,6 +35,9 @@ class _MainState extends State<Main> {
 
   pickImageFromGal() {
     ImagePicker().pickImage(source: ImageSource.gallery).then((imgFile){
+     // String imgString =Utility.base64String(imgFile?.readAsBytesSync());
+     // Picture photo = Picture(id:0,imgsource: imgString);              // Solve this problem..
+     // DBHelper.addPic(photo);
 
     });
   }
