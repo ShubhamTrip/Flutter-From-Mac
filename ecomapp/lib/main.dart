@@ -1,3 +1,4 @@
+import 'package:ecomapp/screens/produts_overview_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,10 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "My Shop",
+      home: ProductOverviewScreen(),
+    );
   }
 }
