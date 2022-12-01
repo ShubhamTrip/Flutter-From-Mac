@@ -1,6 +1,7 @@
 import 'package:ecomapp/models/product_model.dart';
 import 'package:ecomapp/widgets/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductOverviewScreen extends StatelessWidget {
   final List<Product> loadedProduct = [
@@ -47,10 +48,16 @@ class ProductOverviewScreen extends StatelessWidget {
         body: GridView.builder(
           padding: const EdgeInsets.all(10),
           itemCount: loadedProduct.length,
-          itemBuilder: (context, index) => ProductItem(
-              id: loadedProduct[index].id,
-              imageUrl: loadedProduct[index].imageUrl,
-              title: loadedProduct[index].title),
+          itemBuilder: (context, index) => BlocBuilder(
+            builder: (BuildContext context, state) {
+              return ProductItem(
+                iconColor: Colors.black,
+                id: loadedProduct[index].id,
+                imageUrl: loadedProduct[index].imageUrl,
+                title: loadedProduct[index].title,
+              );
+            },
+          ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 3 / 2,

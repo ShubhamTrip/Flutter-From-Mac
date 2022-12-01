@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class ProductItem extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String id;
-
-  ProductItem({required this.id, required this.imageUrl, required this.title});
+  final Color iconColor;
+  ProductItem(
+      {required this.id,
+      required this.imageUrl,
+      required this.title,
+      required this.iconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,11 @@ class ProductItem extends StatelessWidget {
         title: Text(title, textAlign: TextAlign.center),
         backgroundColor: Colors.black54,
         leading: IconButton(
-          icon: const Icon(Icons.favorite),
+          icon: Icon(Icons.favorite, color: iconColor),
+          onPressed: () {},
+        ),
+        trailing: IconButton(
+          icon: Icon(Icons.shopping_cart),
           onPressed: () {},
         ),
       ),
